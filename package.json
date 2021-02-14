@@ -1,0 +1,29 @@
+{
+  "name": "projeto-nodejs-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juunegreiros/nodejs-api-rest.git"
+  },
+  "author": "juliana negreiros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juunegreiros/nodejs-api-rest/issues"
+  },
+  "homepage": "https://github.com/juunegreiros/nodejs-api-rest#readme",
+  "dependencies": {
+    "consign": "^0.1.6",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "mysql": "^2.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}
