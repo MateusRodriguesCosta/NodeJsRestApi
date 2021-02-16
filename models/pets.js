@@ -1,6 +1,6 @@
-import { conexao } from '..infraestrutura/conexao'
+const { conexao } = require('../infraestrutura/conexao')
 
-import { uploadDeArquivo } from '../arquivos/uploadDeArquivo'
+const { uploadDeArquivo } = require('../arquivos/uploadDeArquivo')
 
 class Pet {
     adicionar(pet) {
@@ -22,4 +22,4 @@ class Pet {
     }
 }
 
-export default new Pet()
+module.exports = new Pet
