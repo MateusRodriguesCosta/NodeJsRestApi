@@ -1,20 +1,25 @@
-const conexao = require('..infraestrutura/conexao')
-const { restart } = require('nodemon')
+import { conexao } from '..infraestrutura/conexao'
+
+import { uploadDeArquivo } from '../arquivos/uploadDeArquivo'
 
 class Pet {
     adicionar(pet) {
-        const query = 'INSERT INTO Pets ?'
+        const query = 'INSERT INTO Pets SET ?'
 
-        conexao.query(query, pet, () => {
+        uploadDeArquivo(pet.imagem, pet.nome, (novoCaminho) => {
+            const novoPet = {nome: pet.nome, imagem: novoCaminho }
 
-            if (erro) {
-                res.status(400).json(erro)
-            } else {
-                res.status().json(pet)
-            }
-
+            conexao.query(query, novoPet, () => {
+    
+                if (erro) {
+                    res.status(400).json(erro)
+                } else {
+                    res.status().json(novoPet)
+                }
+            })
         })
+        
     }
 }
 
-module.exports = new Pet()
+export default new Pet()

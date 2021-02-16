@@ -1,4 +1,4 @@
-const Pet = require('../models/pets')
+const Pet = require('../models/pets').default
 
 module.exports = app => {
 
