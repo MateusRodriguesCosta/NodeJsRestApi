@@ -1,12 +1,12 @@
-const express = require('express')
-const consign = require('consign')
-const bodyParser = require('body-parser')
+import express from 'express'
+import consign from 'consign'
+import { json, urlencoded } from 'body-parser'
  
-module.exports = () => {
+export default () => {
  const app = express()
  
- app.use(bodyParser.json())
- app.use(bodyParser.urlencoded({ extended: true }))
+ app.use(json())
+ app.use(urlencoded({ extended: true }))
  
  consign()
    .include('controllers')
