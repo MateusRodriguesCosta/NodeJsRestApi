@@ -1,22 +1,28 @@
 const mysql = require('Mysql')
-const dbconfig = require('../config/db-config')
+const config = require('../config/default.json')
 
-module.exports = () => {
+module.exports = {
 
-    const database = mysql.createConnection(dbconfig)
+    start: () => {
 
-    const connection = database.connect((error) => {
-        if(error) {
+        const connection = mysql.createConnection(config.database)
+
+        connection.connect((error) => {
+
+            if(error) {
+            
+                console.log(`Database not connected: ${error}`)
+            
+            } else {
+            
+                console.log(`Database ${config.database.database} connected`)
+                    
+            }
         
-            console.log(error.message)
-        
-        } else {
-        
-            console.log(`Database ${dbconfig.database} running`)
-                
-        }
-    
-    })
+        })
 
-    return connection
+        this.connection = connection
+
+    }
+        
 } 
