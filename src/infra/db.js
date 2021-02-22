@@ -5,23 +5,28 @@ module.exports = {
 
     start: () => {
 
-        const connection = mysql.createConnection(config.database)
-
-        connection.connect((error) => {
-
-            if(error) {
-            
-                console.log(`Database not connected: ${error}`)
-            
-            } else {
-            
-                console.log(`Database ${config.database.database} connected`)
-                    
-            }
+        return new Promise((resolve, reject) => {
         
-        })
+            const connection = mysql.createConnection(config.database)          
 
-        this.connection = connection
+            connection.connect((error) => {
+
+                if (error) { 
+
+                    console.log(`Database not connected: ${error}`)
+                    return reject()
+
+                } else {
+
+                    this.connection = connection
+                    console.log(`Database ${config.database.database} connected`)
+                    return resolve()
+
+                } 
+        
+            })            
+
+        })
 
     }
         

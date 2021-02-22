@@ -4,11 +4,16 @@ const webserver = express()
 const app = require('./app')
 const db = require('./infra/db')
 
-webserver.listen(process.env.PORT || config.server.port , () => {
+const port = process.env.PORT || config.server.port
+
+webserver.listen(port , () => {
     
-    console.log(`Server running on ${config.server.port}`)
+    console.log(`Server running on ${port}`)
 
-    db.start()
+    db.start().then(() =>{
 
-    app.start(webserver, db.connection)
+        app.start(webserver, db.connection)  
+
+    })
+        
 })
