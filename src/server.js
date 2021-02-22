@@ -1,9 +1,14 @@
-const serverconfig = require('./config/server-config')
-const dbconn = require('./infra/db-connection')
-const appinit = require('./app')
+const express = require('express')
+const config = require('./config/default.json')
+const webserver = express()
+const app = require('./app')
+const db = require('./infra/db')
 
-const db = dbconn()
+webserver.listen(process.env.PORT || config.server.port , () => {
+    
+    console.log(`Server running on ${config.server.port}`)
 
-const app = appinit()
+    db.start()
 
-app.listen(serverconfig.port , () => console.log(`Application running on ${serverconfig.port}`))
+    app.start(webserver, db.connection)
+})
