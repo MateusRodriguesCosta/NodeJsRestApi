@@ -7,10 +7,10 @@
         "port":3306,
         "user": "admin",
         "password": "12345678",
-        "database": "agenda-petshop"
+        "database": "air-scheduler"
     },
     "application": {
-        "name": "petshop"
+        "name": "Air Scheduler"
     }
 
 

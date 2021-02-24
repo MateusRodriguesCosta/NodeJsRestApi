@@ -6,14 +6,20 @@ const db = require('./infra/db')
 
 const port = process.env.PORT || config.server.port
 
-webserver.listen(port , () => {
-    
+webserver.listen(port, async () => {
+
     console.log(`Server running on ${port}`)
 
-    db.start().then(() =>{
+    try {
 
-        app.start(webserver, db.connection)  
+        await db.start()
 
-    })
-        
+        await db.startTables()
+
+        app.start(webserver, db.connection)
+
+    } catch (error) {
+
+    }
+
 })

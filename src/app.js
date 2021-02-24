@@ -3,9 +3,9 @@ const consign = require('consign')
 const bodyParser = require('body-parser')
 
 
-module.exports = {  
+class Application {  
 
-    start: (appserver, dbconnection) => {
+    start(appserver, dbconnection) {
 
         this.dbconnection = dbconnection
 
@@ -26,3 +26,4 @@ module.exports = {
 
 }
 
+module.exports = new Application

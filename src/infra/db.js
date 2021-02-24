@@ -1,33 +1,38 @@
 const mysql = require('Mysql')
 const config = require('../config/default.json')
+const tables = require('./tables')
 
-module.exports = {
+class Database {
 
-    start: () => {
+    start() {
 
         return new Promise((resolve, reject) => {
-        
-            const connection = mysql.createConnection(config.database)          
+
+            const connection = mysql.createConnection(config.database)
 
             connection.connect((error) => {
 
-                if (error) { 
+                if (error) throw new Exception(`Database not connected: ${error}`)
 
-                    console.log(`Database not connected: ${error}`)
-                    return reject()
+                this.connection = connection
+                
+                console.log(`Database ${config.database.database} connected on ${config.database.port}`)
+                resolve(connection)
 
-                } else {
-
-                    this.connection = connection
-                    console.log(`Database ${config.database.database} connected`)
-                    return resolve()
-
-                } 
-        
-            })            
+            })
 
         })
 
     }
-        
-} 
+
+    startTables() {
+
+        if (this.connection === undefined) throw new Exception('Error: Empty database connection')
+
+        return tables.start(this.connection)
+
+    }
+
+}
+
+module.exports = new Database
