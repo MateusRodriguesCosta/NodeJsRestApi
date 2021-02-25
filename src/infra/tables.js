@@ -22,8 +22,7 @@ class Tables {
 
             this.connection.query(query, (error, results, fields) => {
 
-                if (error) throw new Exception(error.sqlMessage)
-                
+                if (error) throw new Error(error.sqlMessage)                
                 resolve()
 
             })
@@ -33,9 +32,7 @@ class Tables {
 
     createCustomers() {
 
-        //const query = 'CREATE TABLE Customers I NOT EXISTS (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), PRIMARY KEY id)'        
-
-        const query = 'SHOW TABLES'
+        const query = 'CREATE TABLE IF NOT EXISTS Customers (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), license SMALLINT, PRIMARY KEY (id))'
 
         return this.buildTable(query)        
 
@@ -43,7 +40,7 @@ class Tables {
 
     createSchedules() {
 
-        //const query = 'CREATE TABLE Customers I NOT EXISTS (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), PRIMARY KEY id)'        
+        //const query = 'CREATE TABLE IF NOT EXISTS Customers I NOT EXISTS (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), PRIMARY KEY id)'        
 
         const query = 'SHOW TABLES'
 
@@ -54,7 +51,7 @@ class Tables {
 
     createServices() {
 
-        //const query = 'CREATE TABLE Customers I NOT EXISTS (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), PRIMARY KEY id)'        
+        //const query = 'CREATE TABLE IF NOT EXISTS Customers I NOT EXISTS (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), PRIMARY KEY id)'        
 
         const query = 'SHOW TABLES'
 

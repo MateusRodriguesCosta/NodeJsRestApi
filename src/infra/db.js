@@ -10,12 +10,12 @@ class Database {
 
             const connection = mysql.createConnection(config.database)
 
-            connection.connect((error) => {
+            connection.connect(error => {
 
-                if (error) throw new Exception(`Database not connected: ${error}`)
+                if (error) throw new Error(`Database not connected: ${error}`)
 
                 this.connection = connection
-                
+
                 console.log(`Database ${config.database.database} connected on ${config.database.port}`)
                 resolve(connection)
 
@@ -27,7 +27,7 @@ class Database {
 
     startTables() {
 
-        if (this.connection === undefined) throw new Exception('Error: Empty database connection')
+        if (this.connection === undefined) throw new Error('Error: Empty database connection')
 
         return tables.start(this.connection)
 

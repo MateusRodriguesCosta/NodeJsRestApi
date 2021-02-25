@@ -20,6 +20,8 @@ webserver.listen(port, async () => {
 
     } catch (error) {
 
+        console.log(`Something went wrong with server!`)
+
     }
 
 })
