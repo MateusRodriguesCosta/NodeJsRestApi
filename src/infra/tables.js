@@ -40,20 +40,15 @@ class Tables {
 
     createSchedules() {
 
-        //const query = 'CREATE TABLE IF NOT EXISTS Customers I NOT EXISTS (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), PRIMARY KEY id)'        
+        const query = 'CREATE TABLE IF NOT EXISTS Schedules (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, type VARCHAR(56) NOT NULL, description VARCHAR(256), insert_date INT, maintenance_start_date INT, maintenance_end_date INT, active BOOLEAN, PRIMARY KEY (id))'
 
-        const query = 'SHOW TABLES'
-
-        return this.buildTable(query)  
-        
+        return this.buildTable(query)          
 
     }
 
     createServices() {
 
-        //const query = 'CREATE TABLE IF NOT EXISTS Customers I NOT EXISTS (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, email VARCHAR(256) NOT NULL, occupation VARCHAR(56), PRIMARY KEY id)'        
-
-        const query = 'SHOW TABLES'
+        const query = 'CREATE TABLE IF NOT EXISTS Services (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(56) NOT NULL, type VARCHAR(56) NOT NULL, cost_fix DECIMAL, description VARCHAR(256), PRIMARY KEY (id))'
 
         return this.buildTable(query)  
 
