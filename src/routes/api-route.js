@@ -1,43 +1,45 @@
-const controller = require('../controllers/api-controller')
+const customer_controller = require('../controllers/api-controller')
 
-module.exports = (app) => {    
+module.exports = (appserver) => {  
+
+    const customer = customer_controller(appserver)
        
-    app.get('/api', (req, res) => {
+    appserver.get('/api', (req, res) => {
 
-        console.log(controller())
+        console.log(customer)
         
-        res.json(controller.listItems)
+        res.json('ok')
 
     })
-
-    app.get('/api/:id', (req, res) => {
+/*
+    appserver.get('/api/:id', (req, res) => {
         
         res.send('GET access to API')
 
     })
 
-    app.post('/api', (req, res) => {
+    appserver.post('/api', (req, res) => {
         
         res.send('POST access to API')
         
     })
 
-    app.patch('/api/:id', (req, res) => {
+    appserver.patch('/api/:id', (req, res) => {
         
         res.send('PATCH access to API')
         
     })
 
-    app.put('/api/:id', (req, res) => {
+    appserver.put('/api/:id', (req, res) => {
         
         res.send('PUT access to API')
         
     })
 
-    app.delete('/api/:id', (req, res) => {
+    appserver.delete('/api/:id', (req, res) => {
         
         res.send('DELETE access to API')
         
     })
-
+*/
 }
