@@ -7,21 +7,19 @@ class Application {
 
     start(appserver, dbconnection) {
 
-        this.dbconnection = dbconnection
-
+        appserver.dbconnection = dbconnection
+        
         appserver.use(bodyParser.urlencoded({extended:true}))
         appserver.use(bodyParser.json())
 
         appserver.set('name', config.application.name)
 
         consign({verbose: false})
-        .include('./controllers')
-        .then('./models')
-        .then('./routes')
+        .include('/src/routes')        
         .into(appserver)
 
         console.log(`Application ${config.application.name} started`)
-        
+                
     }
 
 }
