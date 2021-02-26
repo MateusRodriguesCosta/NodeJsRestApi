@@ -1,17 +1,36 @@
-module.exports = () => {
+const customerdb = require('./mock.json')
+const customer = require('../models/entities/customer')
 
-    const customerdb = require('./mock.json')
+class CustomerController {
 
-    const controller = {
+    constructor(dbconnection) {
+        this.dbconnection = dbconnection
+    }
 
-        listItems: () => {
+    list() {        
 
-            return customerdb
+    }
 
-        }        
+    get() {
+
         
     }
 
-    return controller   
+    add() {
+
+
+    }
+
+    update() {
+
+
+    }
+
+    delete() {
+
+
+    }
 
 }
+
+module.exports = (appserver) => new CustomerController(appserver.dbconnection)
