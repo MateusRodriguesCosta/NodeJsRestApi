@@ -4,16 +4,38 @@ module.exports = (appserver) => {
 
     const customer_controller = controller(appserver)
        
-    appserver.get('/customers', (req, res) => {                
+    appserver.get('/customers', async (req, res) => {                
 
-        res.json()
+        try {            
+         
+            let result = await customer_controller.list()
+
+            res.send(result)
+
+        } catch (error) {
+                        
+            res.status(400).send(error)
+
+        }
 
     })
 
 
-    appserver.get('/customers/:id', (req, res) => {
+    appserver.get('/customers/:id', async (req, res) => {
         
-        res.send('GET access to API')
+        let id = parseInt(req.params.id)
+                
+        try {            
+         
+            let result = await customer_controller.get(id)
+
+            res.send(...result)
+
+        } catch (error) {
+                        
+            res.status(400).send(error)
+
+        }
 
     })
 
@@ -23,9 +45,9 @@ module.exports = (appserver) => {
                 
         try {
          
-            let customer_result = await customer_controller.add(customer)
+            let result = await customer_controller.add(customer)
 
-            res.send(customer_result)
+            res.send(result)
 
         } catch (error) {
             
@@ -35,19 +57,19 @@ module.exports = (appserver) => {
         
     })
 
-    appserver.patch('/customers/:id', (req, res) => {
+    appserver.patch('/customers/:id', async (req, res) => {
         
         res.send('PATCH access to API')
         
     })
 
-    appserver.put('/customers/:id', (req, res) => {
+    appserver.put('/customers/:id', async (req, res) => {
         
         res.send('PUT access to API')
         
     })
 
-    appserver.delete('/customers/:id', (req, res) => {
+    appserver.delete('/customers/:id', async (req, res) => {
         
         res.send('DELETE access to API')
         

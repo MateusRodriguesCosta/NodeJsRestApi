@@ -9,19 +9,19 @@ class CustomerController {
 
     async list() {
 
-        return this.entity.list(id)
+        return this.entity.list()
 
     }
 
     async get(id) {
         
-        return this.entity.get(id)
+        return await this.entity.get(id)
 
     }
 
     async add(customer) {
 
-        return this.entity.add(customer)
+        return await this.entity.add(customer)
 
     }
 

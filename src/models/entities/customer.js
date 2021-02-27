@@ -4,13 +4,19 @@ class Customer {
         this.database = database
     }
 
-    list() {
+    async list() {
+
+        const query = 'SELECT * FROM Customers'
+
+        return await this.database.run(query, "list")
 
     }
 
-    get(id) {        
-
+    async get(id) { 
         
+        const query = 'SELECT * FROM Customers WHERE id = ?'
+
+        return await this.database.run(query, id)
 
     }
 
@@ -18,7 +24,7 @@ class Customer {
 
         const query = 'INSERT INTO Customers SET ?' 
         
-        return this.database.run(query, customer)        
+        return await this.database.run(query, customer)        
 
     }    
 

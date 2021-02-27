@@ -33,21 +33,25 @@ class Database {
 
     }
 
-    run(query, object) {        
+    run(query, placeholder) {
 
         return new Promise((resolve, reject) => {
 
-            this.dbconnection.query(query, object, (error, results) => {
+            this.connection.query(query, placeholder, (error, results) => {
 
                 if (error) reject(error)
-            
-                resolve({...object,...results})
-    
-            })              
 
-        })        
+                console.log(results)
 
-    }   
+                if (typeof (placeholder) !== 'object') resolve(results)
+
+                resolve({ ...placeholder, ...results })
+
+            })
+
+        })
+
+    }
 
 }
 
