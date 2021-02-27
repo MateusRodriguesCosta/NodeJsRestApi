@@ -1,23 +1,25 @@
 const customerdb = require('./mock.json')
 const customer = require('../models/entities/customer')
 
-class CustomerController {
+class CustomerController {    
 
-    constructor(dbconnection) {
-        this.dbconnection = dbconnection
+    constructor(dbconnection) {        
+        this.entity = customer(dbconnection)
     }
 
-    list() {        
+    list() {
 
     }
 
-    get() {
-
+    get(id) {
         
+        return this.entity.get(id)
+
     }
 
-    add() {
+    add(customer) {
 
+        return this.entity.add(customer)
 
     }
 

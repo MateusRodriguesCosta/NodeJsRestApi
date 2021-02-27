@@ -1,26 +1,43 @@
 class Customer {
 
-    constructor(appserver) {
-        this.connection = appserver.connection
+    constructor(dbconnection) {
+        this.dbconnection = dbconnection
+    }
+
+    list() {
+
+    }
+
+    get(id) {        
+
+        return 'Goodboy'
+
     }
 
     add(customer) {
-        const query = 'INSERT INTO Customers SET ?'
 
-        this.connection.query(query, customer, (error) => {
+        const query = 'INSERT INTO Customers SET ?'        
+        
+        this.dbconnection.query(query, customer, (error, results) => {
 
-            if (error) throw new Error(error)
-
-            return customer
+            if (error) throw new Error(error)   
 
         })
+
+        return customer
+
+    }    
+
+    update() {
+
+
     }
 
-    sayhello() {
+    delete() {
 
-        console.log('Hey')
+
     }
 
 }
 
-module.exports = (appserver) => new Customer(appserver) 
+module.exports = (dbconnection) => new Customer(dbconnection) 
