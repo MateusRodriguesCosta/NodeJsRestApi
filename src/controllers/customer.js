@@ -7,29 +7,33 @@ class CustomerController {
         this.entity = customer(dbconnection)
     }
 
-    list() {
+    async list() {
+
+        return await this.entity.list(id)
 
     }
 
-    get(id) {
+    async get(id) {
         
-        return this.entity.get(id)
+        return await this.entity.get(id)
 
     }
 
-    add(customer) {
+    async add(customer) {
 
-        return this.entity.add(customer)
-
-    }
-
-    update() {
-
+        return await this.entity.add(customer)
 
     }
 
-    delete() {
+    async update() {
 
+        return await this.entity.update(id)
+
+    }
+
+    async delete() {
+
+        return await this.entity.delete(id)
 
     }
 

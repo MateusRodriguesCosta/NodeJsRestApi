@@ -7,29 +7,33 @@ class ScheduleController {
         this.entity = schedule(dbconnection)
     }
 
-    list() {
+    async list() {
+
+        return await this.entity.list(id)
 
     }
 
-    get(id) {
+    async get(id) {
         
-        return this.entity.get(id)
+        return await this.entity.get(id)
 
     }
 
-    add(schedule) {
+    async add(schedule) {
 
-        return this.entity.add(schedule)
-
-    }
-
-    update() {
-
+        return await this.entity.add(schedule)
 
     }
 
-    delete() {
+    async update() {
 
+        return await this.entity.update(id)
+
+    }
+
+    async delete() {
+
+        return await this.entity.delete(id)
 
     }
 

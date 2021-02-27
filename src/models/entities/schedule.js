@@ -18,13 +18,17 @@ class Schedule {
 
         const query = 'INSERT INTO Schedules SET ?'        
         
-        this.dbconnection.query(query, schedule, (error, results) => {
+        return new Promise((resolve, reject) => {
 
-            if (error) throw new Error(error)   
+            this.dbconnection.query(query, schedule, (error, results) => {
+
+                if (error) reject(error)
+            
+                resolve(results)
+    
+            })              
 
         })
-
-        return schedule
 
     }    
 

@@ -10,21 +10,25 @@ class Customer {
 
     get(id) {        
 
-        return 'Goodboy'
+        
 
     }
 
     add(customer) {
 
-        const query = 'INSERT INTO Customers SET ?'        
-        
-        this.dbconnection.query(query, customer, (error, results) => {
+        const query = 'INSERT INTO Customers SET ?'                        
 
-            if (error) throw new Error(error)   
+        return new Promise((resolve, reject) => {
 
-        })
+            this.dbconnection.query(query, customer, (error, results) => {
 
-        return customer
+                if (error) reject(error)
+            
+                resolve(results)
+    
+            })              
+
+        })        
 
     }    
 

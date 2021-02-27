@@ -17,13 +17,21 @@ module.exports = (appserver) => {
 
     })
 
-    appserver.post('/customers', (req, res) => {
+    appserver.post('/customers', async (req, res) => {
         
         let customer = req.body
+                
+        try {
+         
+            let customer_result = await customer_controller.add(customer)     
 
-        customer = customer_controller.add(customer)        
+            res.send(customer_result)
 
-        res.send(customer)
+        } catch (error) {
+            
+            res.status(400).send(error)
+
+        }                
         
     })
 

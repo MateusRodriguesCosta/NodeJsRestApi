@@ -7,29 +7,33 @@ class ServiceController {
         this.entity = service(dbconnection)
     }
 
-    list() {
+    async list() {
+
+        return await this.entity.list(id)
 
     }
 
-    get(id) {
+    async get(id) {
         
-        return this.entity.get(id)
+        return await this.entity.get(id)
 
     }
 
-    add(service) {
+    async add(service) {
 
-        return this.entity.add(service)
-
-    }
-
-    update() {
-
+        return await this.entity.add(service)
 
     }
 
-    delete() {
+    async update() {
 
+        return await this.entity.update(service)
+
+    }
+
+    async delete() {
+
+        return await this.entity.delete(service)
 
     }
 
