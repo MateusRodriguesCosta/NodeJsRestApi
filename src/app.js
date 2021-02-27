@@ -5,9 +5,9 @@ const bodyParser = require('body-parser')
 
 class Application {  
 
-    start(appserver, dbconnection) {
+    start(appserver, database) {
 
-        appserver.dbconnection = dbconnection
+        appserver.database = database
         
         appserver.use(bodyParser.urlencoded({extended:true}))
         appserver.use(bodyParser.json())

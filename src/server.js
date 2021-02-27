@@ -16,7 +16,7 @@ webserver.listen(port, async () => {
 
         await db.startTables()
 
-        app.start(webserver, db.connection)
+        app.start(webserver, db)
 
     } catch (error) {
 

@@ -3,40 +3,40 @@ const customer = require('../models/entities/customer')
 
 class CustomerController {    
 
-    constructor(dbconnection) {        
-        this.entity = customer(dbconnection)
+    constructor(database) {        
+        this.entity = customer(database)
     }
 
     async list() {
 
-        return await this.entity.list(id)
+        return this.entity.list(id)
 
     }
 
     async get(id) {
         
-        return await this.entity.get(id)
+        return this.entity.get(id)
 
     }
 
     async add(customer) {
 
-        return await this.entity.add(customer)
+        return this.entity.add(customer)
 
     }
 
     async update() {
 
-        return await this.entity.update(id)
+        return this.entity.update(id)
 
     }
 
     async delete() {
 
-        return await this.entity.delete(id)
+        return this.entity.delete(id)
 
     }
 
 }
 
-module.exports = (appserver) => new CustomerController(appserver.dbconnection)
+module.exports = (appserver) => new CustomerController(appserver.database)

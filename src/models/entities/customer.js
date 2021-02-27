@@ -1,7 +1,7 @@
 class Customer {
 
-    constructor(dbconnection) {
-        this.dbconnection = dbconnection
+    constructor(database) {
+        this.database = database
     }
 
     list() {
@@ -14,21 +14,11 @@ class Customer {
 
     }
 
-    add(customer) {
+    async add(customer) {
 
-        const query = 'INSERT INTO Customers SET ?'                        
-
-        return new Promise((resolve, reject) => {
-
-            this.dbconnection.query(query, customer, (error, results) => {
-
-                if (error) reject(error)
-            
-                resolve(results)
-    
-            })              
-
-        })        
+        const query = 'INSERT INTO Customers SET ?' 
+        
+        return this.database.run(query, customer)        
 
     }    
 
@@ -44,4 +34,4 @@ class Customer {
 
 }
 
-module.exports = (dbconnection) => new Customer(dbconnection) 
+module.exports = (database) => new Customer(database) 

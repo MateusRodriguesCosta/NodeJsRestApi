@@ -1,7 +1,7 @@
 class Schedule {
 
-    constructor(dbconnection) {
-        this.dbconnection = dbconnection
+    constructor(database) {
+        this.database = database
     }
 
     list() {
@@ -10,7 +10,7 @@ class Schedule {
 
     get(id) {        
 
-        return 'Goodboy'
+        
 
     }
 
@@ -18,17 +18,7 @@ class Schedule {
 
         const query = 'INSERT INTO Schedules SET ?'        
         
-        return new Promise((resolve, reject) => {
-
-            this.dbconnection.query(query, schedule, (error, results) => {
-
-                if (error) reject(error)
-            
-                resolve(results)
-    
-            })              
-
-        })
+        return this.database.run(query, schedule) 
 
     }    
 
@@ -44,4 +34,4 @@ class Schedule {
 
 }
 
-module.exports = (dbconnection) => new Schedule(dbconnection) 
+module.exports = (database) => new Schedule(database) 

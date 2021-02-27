@@ -23,7 +23,7 @@ module.exports = (appserver) => {
                 
         try {
          
-            let customer_result = await customer_controller.add(customer)     
+            let customer_result = await customer_controller.add(customer)
 
             res.send(customer_result)
 

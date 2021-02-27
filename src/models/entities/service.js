@@ -1,7 +1,7 @@
 class Service {
 
-    constructor(dbconnection) {
-        this.dbconnection = dbconnection
+    constructor(database) {
+        this.database = database
     }
 
     list() {
@@ -10,7 +10,7 @@ class Service {
 
     get(id) {        
 
-        return 'Goodboy'
+        
 
     }
 
@@ -18,17 +18,7 @@ class Service {
 
         const query = 'INSERT INTO Services SET ?'        
         
-        return new Promise((resolve, reject) => {
-
-            this.dbconnection.query(query, service, (error, results) => {
-
-                if (error) reject(error)
-            
-                resolve(results)
-    
-            })              
-
-        })
+        return this.database.run(query, service) 
 
     }    
 
@@ -44,4 +34,4 @@ class Service {
 
 }
 
-module.exports = (dbconnection) => new Service(dbconnection) 
+module.exports = (database) => new Service(database) 

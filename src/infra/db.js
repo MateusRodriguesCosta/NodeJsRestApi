@@ -33,6 +33,22 @@ class Database {
 
     }
 
+    run(query, object) {        
+
+        return new Promise((resolve, reject) => {
+
+            this.dbconnection.query(query, object, (error, results) => {
+
+                if (error) reject(error)
+            
+                resolve({...object,...results})
+    
+            })              
+
+        })        
+
+    }   
+
 }
 
 module.exports = new Database

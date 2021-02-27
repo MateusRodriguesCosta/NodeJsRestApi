@@ -3,40 +3,40 @@ const service = require('../models/entities/service')
 
 class ServiceController {    
 
-    constructor(dbconnection) {        
-        this.entity = service(dbconnection)
+    constructor(database) {        
+        this.entity = service(database)
     }
 
     async list() {
 
-        return await this.entity.list(id)
+        return this.entity.list(id)
 
     }
 
     async get(id) {
         
-        return await this.entity.get(id)
+        return this.entity.get(id)
 
     }
 
     async add(service) {
 
-        return await this.entity.add(service)
+        return this.entity.add(service)
 
     }
 
     async update() {
 
-        return await this.entity.update(service)
+        return this.entity.update(service)
 
     }
 
     async delete() {
 
-        return await this.entity.delete(service)
+        return this.entity.delete(service)
 
     }
 
 }
 
-module.exports = (appserver) => new ServiceController(appserver.dbconnection)
+module.exports = (appserver) => new ServiceController(appserver.database)
