@@ -9,7 +9,7 @@ class ScheduleController {
 
     async list() {
 
-        return this.entity.list(id)
+        return this.entity.list()
 
     }
 

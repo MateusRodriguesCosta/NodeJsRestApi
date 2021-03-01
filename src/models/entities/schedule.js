@@ -6,12 +6,18 @@ class Schedule {
 
     list() {
 
+        const query = 'SELECT * FROM Schedules'
+
+        return await this.database.run(query, "list")
+
     }
 
     get(id) {        
 
-        
+        const query = 'SELECT * FROM Schedules WHERE id = ?'
 
+        return await this.database.run(query, id)
+        
     }
 
     add(schedule) {

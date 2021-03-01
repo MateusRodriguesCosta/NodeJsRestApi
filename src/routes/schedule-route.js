@@ -6,14 +6,36 @@ module.exports = (appserver) => {
        
     appserver.get('/schedules', (req, res) => {                
 
-        res.json()
+        try {            
+         
+            let result = await schedule_controller.list()
+
+            res.send(result)
+
+        } catch (error) {
+                        
+            res.status(400).send(error)
+
+        }
 
     })
 
 
     appserver.get('/schedules/:id', (req, res) => {
         
-        res.send('GET access to API')
+        let id = parseInt(req.params.id)
+                
+        try {            
+         
+            let result = await schedule_controller.get(id)
+
+            res.send(...result)
+
+        } catch (error) {
+                        
+            res.status(400).send(error)
+
+        }
 
     })
 

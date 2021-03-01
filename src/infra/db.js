@@ -39,9 +39,7 @@ class Database {
 
             this.connection.query(query, placeholder, (error, results) => {
 
-                if (error) reject(error)
-
-                console.log(results)
+                if (error) reject(error)                
 
                 if (typeof (placeholder) !== 'object') resolve(results)
 

@@ -6,10 +6,17 @@ class Service {
 
     list() {
 
+        const query = 'SELECT * FROM Services'
+
+        return await this.database.run(query, "list")
+
     }
 
     get(id) {        
 
+        const query = 'SELECT * FROM Services WHERE id = ?'
+
+        return await this.database.run(query, id)
         
 
     }

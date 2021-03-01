@@ -9,7 +9,7 @@ class ServiceController {
 
     async list() {
 
-        return this.entity.list(id)
+        return this.entity.list()
 
     }
 

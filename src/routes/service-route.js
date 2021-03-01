@@ -6,14 +6,36 @@ module.exports = (appserver) => {
        
     appserver.get('/services', (req, res) => {                
 
-        res.json()
+        try {            
+         
+            let result = await service_controller.list()
+
+            res.send(result)
+
+        } catch (error) {
+                        
+            res.status(400).send(error)
+
+        }
 
     })
 
 
     appserver.get('/services/:id', (req, res) => {
         
-        res.send('GET access to API')
+        let id = parseInt(req.params.id)
+                
+        try {            
+         
+            let result = await service_controller.get(id)
+
+            res.send(...result)
+
+        } catch (error) {
+                        
+            res.status(400).send(error)
+
+        }
 
     })
 
